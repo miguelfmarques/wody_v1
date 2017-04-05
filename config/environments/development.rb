@@ -4,6 +4,9 @@ Rails.application.configure do
   # Better Errors Config
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
 
+  #Foreman Fix
+  $stdout.sync = true
+
   #Devise Config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # In the development environment your application's code is reloaded on
