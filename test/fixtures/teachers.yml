@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cref: 
+  valorhora: 
+  physical_person: one
+
+two:
+  cref: 
+  valorhora: 
+  physical_person: two

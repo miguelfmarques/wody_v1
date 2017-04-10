@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cpf: 
+  sexo: 
+  dtnascimento: 
+  person: one
+
+two:
+  cpf: 
+  sexo: 
+  dtnascimento: 
+  person: two

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 
+  qtvagas: 
+  teacher: one
+
+two:
+  date: 
+  qtvagas: 
+  teacher: two

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipopagamento: 
+  valor: 
+  pagamentocol: 
+  student: one
+
+two:
+  tipopagamento: 
+  valor: 
+  pagamentocol: 
+  student: two

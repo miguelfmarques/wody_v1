@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: 
+  tipopessoa: 
+  telfixo: 
+  telcelular: MyString
+
+two:
+  nome: 
+  tipopessoa: 
+  telfixo: 
+  telcelular: MyString

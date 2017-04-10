@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricula: 
+  vencimento: 
+  situacao: 
+  physical_person: one
+
+two:
+  matricula: 
+  vencimento: 
+  situacao: 
+  physical_person: two
