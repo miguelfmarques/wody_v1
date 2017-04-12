@@ -3,7 +3,7 @@ class CreateSchedules < ActiveRecord::Migration[5.0]
     create_table :schedules do |t|
       t.datetime :date
       t.integer :qtvagas
-      t.references :teacher, foreign_key: true
+      t.references :coach, foreign_key: true
 
       t.timestamps
     end

@@ -1,3 +1,3 @@
-class Student < ApplicationRecord
+class Athlete < ApplicationRecord
   belongs_to :physical_person
 end
