@@ -1,0 +1,2 @@
+class PhysicalPeopleController < ApplicationController
+end
