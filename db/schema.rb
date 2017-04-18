@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412203635) do
+ActiveRecord::Schema.define(version: 20170418024959) do
 
   create_table "adresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "endereco",    limit: 45
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170412203635) do
     t.integer  "physical_person_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["physical_person_id"], name: "index_students_on_physical_person_id", using: :btree
+    t.index ["physical_person_id"], name: "index_athletes_on_physical_person_id", using: :btree
   end
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -48,23 +48,41 @@ ActiveRecord::Schema.define(version: 20170412203635) do
 
   create_table "classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "schedule_id"
-    t.integer  "athletes_id"
+    t.integer  "athlete_id"
     t.integer  "class_type_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["athletes_id"], name: "index_classes_on_student_id", using: :btree
+    t.index ["athlete_id"], name: "index_classes_on_athlete_id", using: :btree
     t.index ["class_type_id"], name: "index_classes_on_class_type_id", using: :btree
     t.index ["schedule_id"], name: "index_classes_on_schedule_id", using: :btree
+  end
+
+  create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "cref",               limit: 45
+    t.string   "valorhora",          limit: 7
+    t.integer  "physical_person_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["physical_person_id"], name: "index_coaches_on_physical_person_id", using: :btree
+  end
+
+  create_table "legal_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "CNPJ"
+    t.string   "fantasy_name"
+    t.integer  "person_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["person_id"], name: "index_legal_people_on_person_id", using: :btree
   end
 
   create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "tipopagamento", limit: 45
     t.string   "valor",         limit: 8
     t.string   "pagamentocol",  limit: 45
-    t.integer  "athletes_id"
+    t.integer  "athlete_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.index ["athletes_id"], name: "index_payments_on_student_id", using: :btree
+    t.index ["athlete_id"], name: "index_payments_on_athlete_id", using: :btree
   end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -106,23 +124,14 @@ ActiveRecord::Schema.define(version: 20170412203635) do
   create_table "schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "date"
     t.integer  "qtvagas"
-    t.integer  "teacher_id"
+    t.integer  "coach_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["teacher_id"], name: "index_schedules_on_teacher_id", using: :btree
+    t.index ["coach_id"], name: "index_schedules_on_coach_id", using: :btree
   end
 
   create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nome", limit: 45
-  end
-
-  create_table "teachers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "cref",               limit: 45
-    t.string   "valorhora",          limit: 7
-    t.integer  "physical_person_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["physical_person_id"], name: "index_teachers_on_physical_person_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -144,9 +153,9 @@ ActiveRecord::Schema.define(version: 20170412203635) do
 
   add_foreign_key "athletes", "physical_people"
   add_foreign_key "classes", "class_types"
-  add_foreign_key "payments", "athletes", column: "athletes_id"
+  add_foreign_key "coaches", "physical_people"
+  add_foreign_key "payments", "athletes"
   add_foreign_key "physical_people", "people"
   add_foreign_key "profiles", "users"
-  add_foreign_key "schedules", "teachers"
-  add_foreign_key "teachers", "physical_people"
+  add_foreign_key "schedules", "coaches"
 end

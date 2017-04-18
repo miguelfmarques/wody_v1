@@ -1,0 +1,3 @@
+class LegalPerson < ApplicationRecord
+  
+end
