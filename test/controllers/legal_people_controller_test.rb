@@ -17,7 +17,7 @@ class LegalPeopleControllerTest < ActionDispatch::IntegrationTest
 
   test "should create legal_person" do
     assert_difference('LegalPerson.count') do
-      post legal_people_url, params: { legal_person: { CNPJ: @legal_person.CNPJ, fantasy_name: @legal_person.fantasy_name, references: @legal_person.references } }
+      post legal_people_url, params: { legal_person: { cnpj: @legal_person.cnpj, nomefantasia: @legal_person.nomefantasia, person_id: @legal_person.person_id } }
     end
 
     assert_redirected_to legal_person_url(LegalPerson.last)
@@ -34,7 +34,7 @@ class LegalPeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update legal_person" do
-    patch legal_person_url(@legal_person), params: { legal_person: { CNPJ: @legal_person.CNPJ, fantasy_name: @legal_person.fantasy_name, references: @legal_person.references } }
+    patch legal_person_url(@legal_person), params: { legal_person: { cnpj: @legal_person.cnpj, nomefantasia: @legal_person.nomefantasia, person_id: @legal_person.person_id } }
     assert_redirected_to legal_person_url(@legal_person)
   end
 

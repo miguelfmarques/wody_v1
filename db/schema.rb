@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418024959) do
+ActiveRecord::Schema.define(version: 20170420140334) do
+
+  create_table "_people_deletar", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nome",       limit: 45
+    t.string   "tipopessoa", limit: 45
+    t.string   "telfixo",    limit: 12
+    t.string   "telcelular", limit: 12
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "adresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "endereco",    limit: 45
@@ -67,8 +76,8 @@ ActiveRecord::Schema.define(version: 20170418024959) do
   end
 
   create_table "legal_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "CNPJ"
-    t.string   "fantasy_name"
+    t.string   "cnpj"
+    t.string   "nomefantasia"
     t.integer  "person_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -86,12 +95,12 @@ ActiveRecord::Schema.define(version: 20170418024959) do
   end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "nome",       limit: 45
-    t.boolean  "tipopessoa"
-    t.string   "telfixo",    limit: 12
-    t.string   "telcelular", limit: 12
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "nome"
+    t.string   "tipopessoa"
+    t.string   "telefonefixo"
+    t.string   "telefonecelular"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "physical_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -154,8 +163,9 @@ ActiveRecord::Schema.define(version: 20170418024959) do
   add_foreign_key "athletes", "physical_people"
   add_foreign_key "classes", "class_types"
   add_foreign_key "coaches", "physical_people"
+  add_foreign_key "legal_people", "people"
   add_foreign_key "payments", "athletes"
-  add_foreign_key "physical_people", "people"
+  add_foreign_key "physical_people", "_people_deletar", column: "person_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "schedules", "coaches"
 end

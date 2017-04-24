@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :legal_people
+  resources :people
   devise_for :users
   get 'home/index'
   root 'home#index'

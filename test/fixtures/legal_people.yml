@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  CNPJ: MyString
-  fantasy_name: MyString
-  references: 
+  cnpj: MyString
+  nomefantasia: MyString
+  person: one
 
 two:
-  CNPJ: MyString
-  fantasy_name: MyString
-  references: 
+  cnpj: MyString
+  nomefantasia: MyString
+  person: two

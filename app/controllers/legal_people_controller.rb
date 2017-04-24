@@ -69,6 +69,6 @@ class LegalPeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def legal_person_params
-      params.require(:legal_person).permit(:CNPJ, :fantasy_name, :references)
+      params.require(:legal_person).permit(:cnpj, :nomefantasia, :person_id)
     end
 end
